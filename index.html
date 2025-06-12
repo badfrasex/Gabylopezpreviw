@@ -3,541 +3,1007 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GABY LOPEZ - Conteúdo Exclusivo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fff5f0 0%, #ffe8d6 100%);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 10px 30px rgba(242, 109, 33, 0.2);
-        }
-
-        .banner {
-            width: 100%;
-            height: 300px;
-            background: url('https://files.catbox.moe/fp9xhd.png') center/cover;
-            position: relative;
-        }
-
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(242, 109, 33, 0.3), rgba(255, 129, 68, 0.2));
-        }
-
-        .profile-section {
-            position: relative;
-            padding: 20px;
-            background: white;
-            margin-top: -50px;
-            border-radius: 30px 30px 0 0;
-            z-index: 2;
-        }
-
-        .profile-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 4px solid #F26D21;
-            object-fit: cover;
-            box-shadow: 0 8px 25px rgba(242, 109, 33, 0.3);
-        }
-
-        .profile-details h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .verified-badge {
-            background: #F26D21;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            color: #D2691E;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .stat-number {
-            color: #F26D21;
-            font-weight: 700;
-        }
-
-        /* Bio */
-        .bio {
-            background: white;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .bio p {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.8;
-            text-align: center;
-        }
-
-        /* Preview */
-        .preview-section {
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .preview-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #F26D21;
-            margin-bottom: 20px;
-        }
-
-        .preview-player {
-            position: relative;
-            display: inline-block;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(242, 109, 33, 0.3);
-        }
-
-        .preview-player:hover {
-            transform: scale(1.05);
-        }
-
-        .preview-image {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: rgba(242, 109, 33, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .play-button:hover {
-            background: #F26D21;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        /* Planos */
-        .plans-section {
-            margin: 60px 0;
-            padding: 40px 0;
-        }
-
-        .plans-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #F26D21;
-            margin-bottom: 50px;
-        }
-
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .plan-card {
-            background: white;
-            border-radius: 25px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(242, 109, 33, 0.2);
-        }
-
-        .plan-popular {
-            border: 3px solid #F26D21;
-            transform: scale(1.05);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #F26D21;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .plan-duration {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .plan-price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #F26D21;
-            margin-bottom: 20px;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .plan-features li {
-            padding: 8px 0;
-            color: #555;
-            font-weight: 500;
-        }
-
-        .plan-features li:before {
-            content: '';
-            color: #F26D21;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .plan-button {
-            width: 100%;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #F26D21, #FF8144);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .plan-button:hover {
-            background: linear-gradient(45deg, #E55A1C, #F26D21);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(242, 109, 33, 0.3);
-        }
-
-        .plan-button.loading {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 60px;
-        }
-
-        /* Animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .profile-info {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-details h1 {
-                font-size: 1.5rem;
-                justify-content: center;
-            }
-
-            .stats {
-                justify-content: center;
-            }
-
-            .plans-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .plan-popular {
-                transform: none;
-            }
-
-            .banner {
-                height: 250px;
-            }
-
-            .plans-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .profile-section {
-                padding: 15px;
-            }
-
-            .bio {
-                padding: 20px;
-            }
-
-            .bio p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <title>Gaby Lopez - Privacy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <!-- Age Verification Modal -->
+    <div id="ageModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Verificação de Idade</h2>
+            </div>
+            <div class="modal-body">
+                <p>Este site contém conteúdo adulto explícito. Você deve ter pelo menos 18 anos para acessar.</p>
+                <p>Ao continuar, você confirma que:</p>
+                <ul>
+                    <li>Tem pelo menos 18 anos de idade</li>
+                    <li>Concorda com os Termos de Uso</li>
+                    <li>Entende a natureza do conteúdo</li>
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmAge" class="btn-primary">Tenho 18+ anos</button>
+                <button id="denyAge" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="cookie-banner hidden">
+        <div class="cookie-content">
+            <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.</p>
+            <div class="cookie-actions">
+                <button id="acceptCookies" class="btn-accept">Aceitar</button>
+                <button id="rejectCookies" class="btn-reject">Rejeitar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
         <!-- Header -->
-        <header class="header fade-in">
-            <div class="banner"></div>
-            <div class="profile-section">
-                <div class="profile-info">
-                    <img src="https://files.catbox.moe/kcfmpw.jpg" alt="SUA MODELO" class="profile-pic">
-                    <div class="profile-details">
-                        <h1>
-                            GABY LOPEZ
-                            <span class="verified-badge">
-                                 Perfil Verificado
-                            </span>
-                        </h1>
-                        <div class="stats">
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="312">0</span> vídeos
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="274">0</span> fotos
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="9210">0</span> seguidores
-                            </div>
-                        </div>
-                    </div>
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#FF6B35"/>
+                        <path d="M16 8C13.243 8 11 10.243 11 13V15H10C9.448 15 9 15.448 9 16V24C9 24.552 9.448 25 10 25H22C22.552 25 23 24.552 23 24V16C23 15.448 22.552 15 22 15H21V13C21 10.243 18.757 8 16 8ZM13 13C13 11.346 14.346 10 16 10C17.654 10 19 11.346 19 13V15H13V13Z" fill="white"/>
+                    </svg>
+                    <span class="logo-text">privateee</span>
+                </div>
+                <div class="header-actions">
+                    <button class="globe-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="m9,12c0,4.97 1.79,9 3,9s3-4.03 3-9c0-4.97-1.79-9-3-9s-3,4.03-3,9"/>
+                        </svg>
+                    </button>
+                    <button class="menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </header>
 
-        <!-- Bio -->
-        <section class="bio fade-in">
-            <p>
-                "Oi, eu sou a Gaby Lopez, e estou começando nesse universo agora<br>
-                Aqui é onde você vai encontrar tudo que não aparece nas redes.<br>
-                Conteúdos íntimos, exclusivos, feitos só pra quem tá do outro lado... com acesso total!"
-            </p>
-        </section>
-
-        <!-- Preview -->
-        <section class="preview-section fade-in">
-            <h2 class="preview-title">Preview Exclusivo</h2>
-            <div class="preview-player" onclick="scrollToPlans()">
-                <img src="https://files.catbox.moe/z5euwd.jpg" alt="Preview" class="preview-image">
-                <div class="play-button">▶</div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://files.catbox.moe/6j56dm.jpg" alt="Background" class="hero-image">
+            </div>
+            <div class="hero-content">
+                <h1 class="creator-name">GABY LOPEZ</h1>
+                <div class="hero-text">
+                    <p>Tô on 🟢 cheia de vontade de te mimar no chat</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Planos -->
-        <section class="plans-section fade-in" id="planos">
-            <h2 class="plans-title">Escolha seu Plano</h2>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <div class="plan-duration">Acesso Mensal</div>
-                    <div class="plan-price">R$19,90</div>
-                    <ul class="plan-features">
-                        <li>Acesso total ao conteúdo</li>
-                        <li>Vídeos exclusivos</li>
-                        <li>Fotos exclusivas</li>
-                        <li>Chat direto</li>
-                        <li>Conteúdo diário</li>
-                    </ul>
-                    <a href="https://privateee.netlify.app/" class="plan-button" onclick="showLoading(this)">
-                        Assinar Agora
-                    </a>
+        <!-- Profile Section -->
+        <section class="profile">
+            <div class="profile-avatar">
+                <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez" class="avatar">
+                <div class="online-indicator"></div>
+            </div>
+            <div class="profile-info">
+                <h2 class="profile-name">
+                    GABY LOPEZ
+                    <svg class="verified-badge" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                        <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </h2>
+                <p class="profile-username">@gabylopez</p>
+                <div class="content-warning">
+                    <p class="warning-text">
+                        Conteúdo totalmente EXPLÍCITO mostrando tudo 
+                        <span class="age-restriction">🔞</span> 
+                        Vídeos solo e CENAS...
+                    </p>
+                    <button class="read-more-btn">Ler mais</button>
                 </div>
+            </div>
+        </section>
 
-                <div class="plan-card plan-popular">
-                    <div class="popular-badge">Mais Popular</div>
-                    <div class="plan-duration">Acesso 3 Meses</div>
-                    <div class="plan-price">R$25,00</div>
-                    <ul class="plan-features">
-                        <li>Acesso total ao conteúdo</li>
-                        <li>Vídeos exclusivos</li>
-                        <li>Fotos Exclusivas</li>
-                        <li>Chat direto</li>
-                        <li>Conteúdo diário</li>
-                        <li>Desconto especial</li>
-                    </ul>
-                    <a href="https://privateee.netlify.app/" class="plan-button" onclick="showLoading(this)">
-                        Assinar Agora
-                    </a>
+        <!-- Subscription Plans -->
+        <section class="subscriptions">
+            <h3 class="section-title">Assinaturas</h3>
+            <div class="plans">
+                <button class="plan plan-monthly active" data-plan="monthly" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSD'">
+                    <span class="plan-duration">1 mês</span>
+                    <span class="plan-price">R$ 19,90</span>
+                </button>
+            </div>
+
+            <div class="promotions">
+                <h4 class="section-title">
+                    Promoções
+                    <svg class="chevron-up" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="12,10 8,6 4,10"/>
+                    </svg>
+                </h4>
+                <div class="plans">
+                    <button class="plan plan-quarterly" data-plan="quarterly" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSE'">
+<span class="plan-duration">3 meses <em>(10% off)</em></span>
+                        <span class="plan-price">R$ 25,00</span>
+                    </button>
+              <button class="plan plan-biannual" data-plan="biannual" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSF'">
+  <span class="plan-duration">6 meses <em>(10% off)</em></span>
+  <span class="plan-price">R$ 35,00</span>
+</button>
                 </div>
+            </div>
+        </section>
+
+        <!-- Content Stats -->
+        <section class="content-stats">
+            <div class="stats-tabs">
+                <button class="stats-tab active" data-tab="posts">143 postagens</button>
+                <button class="stats-tab" data-tab="media">189 mídias</button>
+            </div>
+        </section>
+
+        <!-- Creator Profile Card -->
+        <section class="creator-card">
+            <div class="creator-header">
+                <div class="creator-avatar">
+                    <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez">
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="creator-details">
+                    <h3 class="creator-name-card">
+                        GABY LOPEZ
+                        <svg class="verified-badge" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                            <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h3>
+                    <p class="creator-username-card">@gabylopez</p>
+                </div>
+                <button class="options-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
+            
+       <style>
+.locked-wrapper {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.locked-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px) brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.locked-wrapper .lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+}
+
+.locked-wrapper:hover img {
+  filter: blur(6px) brightness(0.5);
+}
+</style>
+
+<a href="https://go.perfectpay.com.br/PPU38CPQFSC">
+  <div class="locked-wrapper">
+    <img src="https://files.catbox.moe/gbjx5r.jpg" alt="Conteúdo bloqueado">
+    <div class="lock-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+    </div>
+  </div>
+</a>
+
+<div class="content-preview-stats">
+                    <div class="preview-stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Creator Profile Card -->
+        <section class="creator-card">
+            <div class="creator-header">
+                <div class="creator-avatar">
+                    <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez">
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="creator-details">
+                    <h3 class="creator-name-card">
+                        GABY LOPEZ
+                        <svg class="verified-badge" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                            <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h3>
+                    <p class="creator-username-card">@gabylopez</p>
+                </div>
+                <button class="options-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <a href="https://go.perfectpay.com.br/PPU38CPQFSC">
+  <div class="locked-wrapper">
+    <img src="https://files.catbox.moe/6mvh79.jpg" alt="Conteúdo bloqueado">
+    <div class="lock-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+    </div>
+  </div>
+</a>
+            
+                <div class="content-preview-stats">
+                    <div class="preview-stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Actions -->
+        <section class="bottom-actions">
+            <div class="action-buttons">
+                <button class="action-btn like-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </button>
+                <button class="action-btn comment-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+  
+                <button class="action-btn save-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
             </div>
         </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 privateee - Todos os direitos reservados</p>
-    </footer>
+    <script src="script.js"></script>
+</body>
+    </html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaby Lopez - Privacy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Age Verification Modal -->
+    <div id="ageModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Verificação de Idade</h2>
+            </div>
+            <div class="modal-body">
+                <p>Este site contém conteúdo adulto explícito. Você deve ter pelo menos 18 anos para acessar.</p>
+                <p>Ao continuar, você confirma que:</p>
+                <ul>
+                    <li>Tem pelo menos 18 anos de idade</li>
+                    <li>Concorda com os Termos de Uso</li>
+                    <li>Entende a natureza do conteúdo</li>
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmAge" class="btn-primary">Tenho 18+ anos</button>
+                <button id="denyAge" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        // Animação dos contadores
-        function animateCounters() {
-            const counters = document.querySelectorAll('[data-count]');
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="cookie-banner hidden">
+        <div class="cookie-content">
+            <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.</p>
+            <div class="cookie-actions">
+                <button id="acceptCookies" class="btn-accept">Aceitar</button>
+                <button id="rejectCookies" class="btn-reject">Rejeitar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#FF6B35"/>
+                        <path d="M16 8C13.243 8 11 10.243 11 13V15H10C9.448 15 9 15.448 9 16V24C9 24.552 9.448 25 10 25H22C22.552 25 23 24.552 23 24V16C23 15.448 22.552 15 22 15H21V13C21 10.243 18.757 8 16 8ZM13 13C13 11.346 14.346 10 16 10C17.654 10 19 11.346 19 13V15H13V13Z" fill="white"/>
+                    </svg>
+                    <span class="logo-text">privateee</span>
+                </div>
+                <div class="header-actions">
+                    <button class="globe-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="m9,12c0,4.97 1.79,9 3,9s3-4.03 3-9c0-4.97-1.79-9-3-9s-3,4.03-3,9"/>
+                        </svg>
+                    </button>
+                    <button class="menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://files.catbox.moe/6j56dm.jpg" alt="Background" class="hero-image">
+            </div>
+            <div class="hero-content">
+                <h1 class="creator-name">GABY LOPEZ</h1>
+                <div class="hero-text">
+                    <p>Tô on 🟢 cheia de vontade de te mimar no chat</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="profile">
+            <div class="profile-avatar">
+                <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez" class="avatar">
+                <div class="online-indicator"></div>
+            </div>
+            <div class="profile-info">
+                <h2 class="profile-name">
+                    GABY LOPEZ
+                    <svg class="verified-badge" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                        <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </h2>
+                <p class="profile-username">@gabylopez</p>
+                <div class="content-warning">
+                    <p class="warning-text">
+                        Conteúdo totalmente EXPLÍCITO mostrando tudo 
+                        <span class="age-restriction">🔞</span> 
+                        Vídeos solo e CENAS...
+                    </p>
+                    <button class="read-more-btn">Ler mais</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscription Plans -->
+        <section class="subscriptions">
+            <h3 class="section-title">Assinaturas</h3>
+            <div class="plans">
+                <button class="plan plan-monthly active" data-plan="monthly" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSD'">
+                    <span class="plan-duration">1 mês</span>
+                    <span class="plan-price">R$ 19,90</span>
+                </button>
+            </div>
+
+            <div class="promotions">
+                <h4 class="section-title">
+                    Promoções
+                    <svg class="chevron-up" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="12,10 8,6 4,10"/>
+                    </svg>
+                </h4>
+                <div class="plans">
+                    <button class="plan plan-quarterly" data-plan="quarterly" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSE'">
+<span class="plan-duration">3 meses <em>(10% off)</em></span>
+                        <span class="plan-price">R$ 25,00</span>
+                    </button>
+              <button class="plan plan-biannual" data-plan="biannual" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSF'">
+  <span class="plan-duration">6 meses <em>(10% off)</em></span>
+  <span class="plan-price">R$ 35,00</span>
+</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Stats -->
+        <section class="content-stats">
+            <div class="stats-tabs">
+                <button class="stats-tab active" data-tab="posts">143 postagens</button>
+                <button class="stats-tab" data-tab="media">189 mídias</button>
+            </div>
+        </section>
+
+        <!-- Creator Profile Card -->
+        <section class="creator-card">
+            <div class="creator-header">
+                <div class="creator-avatar">
+                    <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez">
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="creator-details">
+                    <h3 class="creator-name-card">
+                        GABY LOPEZ
+                        <svg class="verified-badge" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                            <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h3>
+                    <p class="creator-username-card">@gabylopez</p>
+                </div>
+                <button class="options-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
             
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        counter.textContent = target.toLocaleString('pt-BR');
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current).toLocaleString('pt-BR');
-                    }
-                }, 16);
-            });
-        }
+       <style>
+.locked-wrapper {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
 
-        // Scroll suave para os planos
-        function scrollToPlans() {
-            document.getElementById('planos').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
+.locked-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px) brightness(0.7);
+  transition: filter 0.3s ease;
+}
 
-        // Efeito de loading nos botões
-        function showLoading(button) {
-            button.classList.add('loading');
-            button.textContent = ' Liberando seu acesso...';
+.locked-wrapper .lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+}
+
+.locked-wrapper:hover img {
+  filter: blur(6px) brightness(0.5);
+}
+</style>
+
+<a href="https://go.perfectpay.com.br/PPU38CPQFSC">
+  <div class="locked-wrapper">
+    <img src="https://files.catbox.moe/gbjx5r.jpg" alt="Conteúdo bloqueado">
+    <div class="lock-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+    </div>
+  </div>
+</a>
+
+<div class="content-preview-stats">
+                    <div class="preview-stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Creator Profile Card -->
+        <section class="creator-card">
+            <div class="creator-header">
+                <div class="creator-avatar">
+                    <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez">
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="creator-details">
+                    <h3 class="creator-name-card">
+                        GABY LOPEZ
+                        <svg class="verified-badge" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                            <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h3>
+                    <p class="creator-username-card">@gabylopez</p>
+                </div>
+                <button class="options-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
             
-            setTimeout(() => {
-                button.classList.remove('loading');
-                button.textContent = 'Assinar Agora';
-            }, 3000);
-        }
+            <a href="https://go.perfectpay.com.br/PPU38CPQFSC">
+  <div class="locked-wrapper">
+    <img src="https://files.catbox.moe/6mvh79.jpg" alt="Conteúdo bloqueado">
+    <div class="lock-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+    </div>
+  </div>
+</a>
+            
+                <div class="content-preview-stats">
+                    <div class="preview-stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Inicializar animações quando a página carregar
-        window.addEventListener('load', () => {
-            setTimeout(animateCounters, 500);
-        });
+        <!-- Bottom Actions -->
+        <section class="bottom-actions">
+            <div class="action-buttons">
+                <button class="action-btn like-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </button>
+                <button class="action-btn comment-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+  
+                <button class="action-btn save-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </div>
 
-        // Animação de entrada dos elementos
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <script src="script.js"></script>
+</body>
+    </html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaby Lopez - Privacy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Age Verification Modal -->
+    <div id="ageModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Verificação de Idade</h2>
+            </div>
+            <div class="modal-body">
+                <p>Este site contém conteúdo adulto explícito. Você deve ter pelo menos 18 anos para acessar.</p>
+                <p>Ao continuar, você confirma que:</p>
+                <ul>
+                    <li>Tem pelo menos 18 anos de idade</li>
+                    <li>Concorda com os Termos de Uso</li>
+                    <li>Entende a natureza do conteúdo</li>
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmAge" class="btn-primary">Tenho 18+ anos</button>
+                <button id="denyAge" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="cookie-banner hidden">
+        <div class="cookie-content">
+            <p>Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.</p>
+            <div class="cookie-actions">
+                <button id="acceptCookies" class="btn-accept">Aceitar</button>
+                <button id="rejectCookies" class="btn-reject">Rejeitar</button>
+            </div>
+        </div>
+    </div>
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s ease-out';
-            observer.observe(el);
-        });
-    </script>
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#FF6B35"/>
+                        <path d="M16 8C13.243 8 11 10.243 11 13V15H10C9.448 15 9 15.448 9 16V24C9 24.552 9.448 25 10 25H22C22.552 25 23 24.552 23 24V16C23 15.448 22.552 15 22 15H21V13C21 10.243 18.757 8 16 8ZM13 13C13 11.346 14.346 10 16 10C17.654 10 19 11.346 19 13V15H13V13Z" fill="white"/>
+                    </svg>
+                    <span class="logo-text">privateee</span>
+                </div>
+                <div class="header-actions">
+                    <button class="globe-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="m9,12c0,4.97 1.79,9 3,9s3-4.03 3-9c0-4.97-1.79-9-3-9s-3,4.03-3,9"/>
+                        </svg>
+                    </button>
+                    <button class="menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://files.catbox.moe/6j56dm.jpg" alt="Background" class="hero-image">
+            </div>
+            <div class="hero-content">
+                <h1 class="creator-name">GABY LOPEZ</h1>
+                <div class="hero-text">
+                    <p>Tô on 🟢 cheia de vontade de te mimar no chat</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="profile">
+            <div class="profile-avatar">
+                <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez" class="avatar">
+                <div class="online-indicator"></div>
+            </div>
+            <div class="profile-info">
+                <h2 class="profile-name">
+                    GABY LOPEZ
+                    <svg class="verified-badge" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                        <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </h2>
+                <p class="profile-username">@gabylopez</p>
+                <div class="content-warning">
+                    <p class="warning-text">
+                        Conteúdo totalmente EXPLÍCITO mostrando tudo 
+                        <span class="age-restriction">🔞</span> 
+                        Vídeos solo e CENAS...
+                    </p>
+                    <button class="read-more-btn">Ler mais</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscription Plans -->
+        <section class="subscriptions">
+            <h3 class="section-title">Assinaturas</h3>
+            <div class="plans">
+                <button class="plan plan-monthly active" data-plan="monthly" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSD'">
+                    <span class="plan-duration">1 mês</span>
+                    <span class="plan-price">R$ 19,90</span>
+                </button>
+            </div>
+
+            <div class="promotions">
+                <h4 class="section-title">
+                    Promoções
+                    <svg class="chevron-up" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="12,10 8,6 4,10"/>
+                    </svg>
+                </h4>
+                <div class="plans">
+                    <button class="plan plan-quarterly" data-plan="quarterly" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSE'">
+<span class="plan-duration">3 meses <em>(10% off)</em></span>
+                        <span class="plan-price">R$ 25,00</span>
+                    </button>
+              <button class="plan plan-biannual" data-plan="biannual" onclick="window.location.href='https://siteseguro.net/PPU38CPQFSF'">
+  <span class="plan-duration">6 meses <em>(10% off)</em></span>
+  <span class="plan-price">R$ 35,00</span>
+</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Stats -->
+        <section class="content-stats">
+            <div class="stats-tabs">
+                <button class="stats-tab active" data-tab="posts">143 postagens</button>
+                <button class="stats-tab" data-tab="media">189 mídias</button>
+            </div>
+        </section>
+
+        <!-- Creator Profile Card -->
+        <section class="creator-card">
+            <div class="creator-header">
+                <div class="creator-avatar">
+                    <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez">
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="creator-details">
+                    <h3 class="creator-name-card">
+                        GABY LOPEZ
+                        <svg class="verified-badge" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                            <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h3>
+                    <p class="creator-username-card">@gabylopez</p>
+                </div>
+                <button class="options-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
+            
+       <style>
+.locked-wrapper {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.locked-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px) brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.locked-wrapper .lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+}
+
+.locked-wrapper:hover img {
+  filter: blur(6px) brightness(0.5);
+}
+</style>
+
+<a href="https://go.perfectpay.com.br/PPU38CPQFSC">
+  <div class="locked-wrapper">
+    <img src="https://files.catbox.moe/gbjx5r.jpg" alt="Conteúdo bloqueado">
+    <div class="lock-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+    </div>
+  </div>
+</a>
+
+<div class="content-preview-stats">
+                    <div class="preview-stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Creator Profile Card -->
+        <section class="creator-card">
+            <div class="creator-header">
+                <div class="creator-avatar">
+                    <img src="https://files.catbox.moe/6vt7n6.jpg" alt="Gaby Lopez">
+                    <div class="online-indicator"></div>
+                </div>
+                <div class="creator-details">
+                    <h3 class="creator-name-card">
+                        GABY LOPEZ
+                        <svg class="verified-badge" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="10" fill="#FF6B35"/>
+                            <path d="M7 10L9 12L13 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </h3>
+                    <p class="creator-username-card">@gabylopez</p>
+                </div>
+                <button class="options-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <a href="https://go.perfectpay.com.br/PPU38CPQFSC">
+  <div class="locked-wrapper">
+    <img src="https://files.catbox.moe/6mvh79.jpg" alt="Conteúdo bloqueado">
+    <div class="lock-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+    </div>
+  </div>
+</a>
+            
+                <div class="content-preview-stats">
+                    <div class="preview-stat">
+                        <span class="stat-icon">📷</span>
+                        <span class="stat-number">90</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">🎥</span>
+                        <span class="stat-number">99</span>
+                    </div>
+                    <span class="stat-separator">•</span>
+                    <div class="preview-stat">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-number">19K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Actions -->
+        <section class="bottom-actions">
+            <div class="action-buttons">
+                <button class="action-btn like-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </button>
+                <button class="action-btn comment-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+  
+                <button class="action-btn save-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
